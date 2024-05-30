@@ -1,0 +1,17 @@
+import '../metamodelado/metamodelo_simplicado_digrama_clase.ecore';
+
+package example : ex = 'http://www.example.org/examples/example.ecore'
+{
+	-- Example Class with hierarchical properties and an invariant
+	class Example
+	{
+		property name : String[?];
+		property children#parent : Example[*] { composes, ordered } ;
+		property parent#children : Example[?];
+		operation ucName() : String[?] {
+			body: name?.toUpperCase();
+		}
+		invariant NameIsLowerCase('Expected a lowercase name rather than '' + name + '''):
+			name = name?.toLowerCase();
+	}
+}

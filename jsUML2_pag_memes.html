@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Diagramas a partir de texto</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link type=‘text/css’ rel=‘stylesheet’ href=‘https://www.uco.es/~in1rosaj/tools/jsUML2/ejemplos/css/UDStyle.css’ media=‘screen’ />
+  
+  <script type="text/javascript" src="https://www.uco.es/~in1rosaj/tools/jsUML2/ejemplos/UDCore.js"></script>
+  <script type="text/javascript" src="https://www.uco.es/~in1rosaj/tools/jsUML2/ejemplos/UDModules.js"></script>
+
+  <script type="text/javascript">
+    window.onload = function () {
+
+      var classDiagram = new UMLClassDiagram(
+        { id: 'classDiagram', width: 800, height: 500 }
+      );
+      classDiagram.setName('Modelo PIM')
+
+      // CLASES
+      var usuario = new UMLClass({ x: 100, y: 50 });
+      var meme = new UMLClass({ x: 120, y: 250 });
+      var categoria = new UMLClass({ x: 400, y: 255 });
+      var calificacion = new UMLClass({ x: 250, y: 400 });
+
+      usuario.setName("Usuario");
+      usuario.addAttribute('+nombres:String');
+      usuario.addAttribute('+apellidos:String');
+      usuario.addAttribute('+numero_identificacion:String');
+      usuario.addOperation('+getNombres():String');
+      usuario.addOperation('+setNombres(nombres)');
+
+      meme.setName("Meme");
+      meme.addAttribute('+numero:String');
+      meme.addAttribute('+categoria: categoria');
+      meme.addAttribute('+usuario:String');
+      meme.addOperation('+getNumero():String');
+      meme.addOperation('+setNumero(nombres)');
+
+      categoria.setName("Categoria");
+      categoria.addAttribute('Humor');
+      categoria.addAttribute('Mascota');
+      categoria.addAttribute('Ellos');
+      categoria.addAttribute('Ellas');
+      categoria.addAttribute('TodoMundo');
+
+      calificacion.setName("Calificación");
+      calificacion.addAttribute('punto');
+
+      classDiagram.addElement(usuario);
+      classDiagram.addElement(meme);
+      classDiagram.addElement(categoria);
+      classDiagram.addElement(calificacion);
+
+      // RELACIONES
+
+      //composición relacion fuerte
+      var composicion = new UMLComposition({ a: usuario, b: meme });
+      composicion.setValue( 'name', 'tiene');
+      composicion.setMultiplicityA('1');
+      composicion.setMultiplicityB('*');
+      classDiagram.addElement(composicion);
+
+      var dependencia2 = new UMLComposition({ a: meme, b: categoria });
+      dependencia2.setValue( 'name', 'pertenece');
+      dependencia2.setMultiplicityA('1');
+      dependencia2.setMultiplicityB('1');
+      classDiagram.addElement(dependencia2);
+
+      var dependencia3 = new UMLComposition({ a: meme, b: calificacion });
+      dependencia3.setValue( 'name', 'tiene');
+      dependencia3.setMultiplicityA('1');
+      dependencia3.setMultiplicityB('1');
+      classDiagram.addElement(dependencia3);
+
+      classDiagram.draw();
+      classDiagram.interaction(true);
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="row">
+    <div class="col-md-10 m-auto my-5">
+      <div class="card">
+        <div class="card-header">
+          <strong>Diagrama de clases con jsUML2 (PIM)</strong>
+        </div>
+        <div class="card-body">
+          <p>
+            Ejemplo librería <a target="_blank"
+              href="https://www.uco.es/users/in1rosaj//tools/jsUML2/doc/TheProgrammersGuide_003.htm">jsUML2</a>
+            para crear diagramas a partir de texto y su
+            <a target="_blank" href="https://www.uco.es/~in1rosaj/tools/jsUML2/editor/index.html">Live editor</a>
+          </p>
+          <div id="classDiagram"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

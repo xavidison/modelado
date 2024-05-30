@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MetamodeloSimplificadoUML_EXB:Package
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:MetamodeloSimplificadoUML_EXB="http://metamodelo-simplificado-uml-exb.ecore"
+    xsi:schemaLocation="http://metamodelo-simplificado-uml-exb.ecore ../metamodelado/metamodelo_simplicado_digrama_clase.ecore">
+  <primitivedatatype
+      name="String"/>
+  <primitivedatatype
+      name="Date"/>
+  <Class name="Usuario">
+    <attribute
+        name="identificacion"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="nombre"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="apellido"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="fechaNacimiento"
+        type="//@primitivedatatype.1"/>
+    <attribute
+        name="Attribute"
+        type="//@primitivedatatype.0"/>
+  </Class>
+  <Class name="Meme">
+    <attribute
+        name="numero"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="descripcion"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="relacionUsuarioMeme"
+        type="//@Class.0"/>
+    <attribute
+        name="relacionMemeCalificacion"
+        type="//@Class.2"/>
+    <attribute
+        name="relacionMemeCategoria"
+        type="//@Class.3"/>
+  </Class>
+  <Class name="Calificacion">
+    <attribute
+        name="codigo"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="nombre"/>
+    <attribute
+        name="descripcion"/>
+  </Class>
+  <Class name="Categoria">
+    <attribute
+        name="codigo"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="nombre"
+        type="//@primitivedatatype.0"/>
+    <attribute
+        name="descripcion"
+        type="//@primitivedatatype.0"/>
+  </Class>
+</MetamodeloSimplificadoUML_EXB:Package>
